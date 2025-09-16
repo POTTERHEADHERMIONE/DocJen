@@ -40,6 +40,3 @@ cmake --build . -- -j
 * Real-time or embedded systems.
 * In-memory databases and concurrent data structures research.
 
-## License
-
-MIT License
