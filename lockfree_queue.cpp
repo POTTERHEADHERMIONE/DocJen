@@ -1,4 +1,5 @@
 #include "lockfree_queue.h"
+// Here we have made use of the lockfree_queue.h library 
 
 // Michael-Scott lock-free queue
 template <typename T>
