@@ -10,14 +10,11 @@ DocJen is a project implementing simple **lock-free data structures**
 - Microbenchmark (`benchmark.cpp`) to measure throughput.
 - Tests (`tests.cpp`) to validate correctness.
 
-⚠️ **Note**: These implementations are for educational/demo purposes. 
-No memory reclamation (hazard pointers, epochs) is implemented. 
-Running long workloads may cause memory leaks.
 
----
 
 ## Build
 ```bash
-mkdir build && cd build
+mkdir build 
+cd build
 cmake ..
 cmake --build . -- -j
