@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.10)
+project(DocJen)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2 -pthread")
+
+# sources
+set(SRCS
+    main.cpp
+    lockfree_stack.cpp
+    lockfree_queue.cpp
+)
+
+add_executable(docjen ${SRCS})
+add_executable(docjen_bench benchmark.cpp lockfree_stack.cpp lockfree_queue.cpp)
+add_executable(docjen_tests tests.cpp lockfree_stack.cpp lockfree_queue.cpp)
+
+target_include_directories(docjen PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(docjen_bench PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(docjen_tests PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+
+# recommended: enable warnings
+if(MSVC)
+  target_compile_options(docjen PRIVATE /W4)
+  target_compile_options(docjen_bench PRIVATE /W4)
+  target_compile_options(docjen_tests PRIVATE /W4)
+else()
+  target_compile_options(docjen PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(docjen_bench PRIVATE -Wall -Wextra -Wpedantic)
+  target_compile_options(docjen_tests PRIVATE -Wall -Wextra -Wpedantic)
+endif()
